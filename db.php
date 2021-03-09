@@ -34,6 +34,15 @@
 		$result->close();
 	}
 	
+	function getBook($book_id) {
+		global $conn;
+		$sql = "select * from book where id = $book_id";
+		$result = $conn->query($sql);
+		if ($result) {
+			return $result->fetch_assoc();
+		}
+	}
+	
 	function insertBook($title, $author, $genre, $summary) {
 		// this needs parameterized queries since it handles user input
 		global $conn;
