@@ -17,6 +17,7 @@
 	}	
 	
 	function echoBookList() {
+		// remember to escape out this user input data
 		global $conn;
 		$sql = "select * from book";
 		$result = $conn->query($sql);
@@ -24,7 +25,9 @@
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
 			while ($row) {
-				echo $row['title'] . " " . $row['author'] . " " . $row['genre'] . "<br>" . $row['summary'] . "<br><br>";
+				$update_button = "<button type='button' name='update' value='$row[id]'>Update</button>";
+				$delete_button = "<button type='button' name='delete'>Delete</button>";
+				echo $row['title'] . " " . $row['author'] . " " . $row['genre'] . "<br>" . $row['summary'] . " " . $update_button . $delete_button . "<br><br>";
 				$row = $result->fetch_assoc();
 			}
 		}	
