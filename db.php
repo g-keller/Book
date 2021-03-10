@@ -38,11 +38,11 @@
 		$author = !empty($raw_author) ? htmlspecialchars($raw_author) : "[AUTHOR NOT SPECIFIED]";
 		$genre = !empty($raw_genre) ? htmlspecialchars($raw_genre) : "[GENRE NOT SPECIFIED]";
 		$summary = !empty($raw_summary) ? htmlspecialchars($raw_summary) : "[SUMMARY NOT SPECIFIED]";
-		$basic_info_line = "<p>$title" . " " . $author . " " . $genre . "</p>";
+		$basic_info_line = "<h2>$title" . " by " . $author . " (" . $genre . ")</h2>";
 		$summary_line = "<p>$summary</p>";
 		$update_button = "<button type='button' name='update' value='$id'>Update</button>";
 		$delete_button = "<button type='button' name='delete' value='$id'>Delete</button>";
-		return "<article id='$id' class='book-component'>" . $basic_info_line . $summary_line . " " . $update_button . $delete_button . "</article>";
+		return "<article id='$id' class='book-component'>" . $basic_info_line . $summary_line . " <div id='buttons'>" . $update_button . $delete_button . "</div></article>";
 	}
 	
 	function getBook($book_id) {

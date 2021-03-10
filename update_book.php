@@ -38,6 +38,7 @@
 <html>
 <head>
 <title>Update Book | Book DB</title>
+<link rel="stylesheet" href="style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="main.js" async></script>
 <style>
@@ -48,6 +49,7 @@
 </head>
 
 <body>
+<div id="update-div">
 <form method="POST" action="update_book.php">
 	<input type="hidden" name="bookDBId" value="<?= $id ?>" />
 	<label for="bookDBTitle">Title: </label>
@@ -60,5 +62,6 @@
 	<input type="text" name="bookDBSummary" value="<?= $summary ?>" />
 	<input type="submit" />
 </form>
+</div>
 </body>
 </html>

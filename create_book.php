@@ -6,5 +6,5 @@
 			insertBook($_POST["bookDBTitle"], $_POST["bookDBAuthor"], $_POST["bookDBGenre"], $_POST["bookDBSummary"]);
 		}
 	}
-	header("Location: index.php");
+	header("Location: /");
 ?>
