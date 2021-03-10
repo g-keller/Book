@@ -18,7 +18,8 @@ function deleteBook() {
 	});
 
 	// remove book component from DOM
-	$(this).remove();
+	var book = $("div[id=" + str + "]")
+	book.remove();
 	// send post request to delete_book.php 
 
 	

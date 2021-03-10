@@ -25,9 +25,11 @@
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
 			while ($row) {
+				$basic_info_line = "<p>$row[title]" . " " . $row['author'] . " " . $row['genre'] . "</p>";
+				$summary_line = "<p>$row[summary]</p>";
 				$update_button = "<button type='button' name='update' value='$row[id]'>Update</button>";
 				$delete_button = "<button type='button' name='delete' value='$row[id]'>Delete</button>";
-				echo $row['title'] . " " . $row['author'] . " " . $row['genre'] . "<br>" . $row['summary'] . " " . $update_button . $delete_button . "<br><br>";
+				echo "<div id=$row[id]>" . $basic_info_line . $summary_line . " " . $update_button . $delete_button . "</div>";
 				$row = $result->fetch_assoc();
 			}
 		}	
