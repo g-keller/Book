@@ -25,19 +25,24 @@
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
 			while ($row) {
-				$title = !empty($row['title']) ? htmlspecialchars($row['title']) : "[TITLE NOT SPECIFIED]";
-				$author = !empty($row['author']) ? htmlspecialchars($row['author']) : "[AUTHOR NOT SPECIFIED]";
-				$genre = !empty($row['genre']) ? htmlspecialchars($row['genre']) : "[GENRE NOT SPECIFIED]";
-				$summary = !empty($row['summary']) ? htmlspecialchars($row['summary']) : "[SUMMARY NOT SPECIFIED]";
-				$basic_info_line = "<p>$title" . " " . $author . " " . $genre . "</p>";
-				$summary_line = "<p>$summary</p>";
-				$update_button = "<button type='button' name='update' value='$row[id]'>Update</button>";
-				$delete_button = "<button type='button' name='delete' value='$row[id]'>Delete</button>";
-				echo "<div id=$row[id]>" . $basic_info_line . $summary_line . " " . $update_button . $delete_button . "</div>";
+				$component = createBookDataComponent($row['id'], $row['title'], $row['author'], $row['genre'], $row['summary']);
+				echo $component;
 				$row = $result->fetch_assoc();
 			}
 		}	
 		$result->close();
+	}
+	
+	function createBookDataComponent($id, $raw_title, $raw_author, $raw_genre, $raw_summary) {
+		$title = !empty($raw_title) ? htmlspecialchars($raw_title) : "[TITLE NOT SPECIFIED]";
+		$author = !empty($raw_author) ? htmlspecialchars($raw_author) : "[AUTHOR NOT SPECIFIED]";
+		$genre = !empty($raw_genre) ? htmlspecialchars($raw_genre) : "[GENRE NOT SPECIFIED]";
+		$summary = !empty($raw_summary) ? htmlspecialchars($raw_summary) : "[SUMMARY NOT SPECIFIED]";
+		$basic_info_line = "<p>$title" . " " . $author . " " . $genre . "</p>";
+		$summary_line = "<p>$summary</p>";
+		$update_button = "<button type='button' name='update' value='$id'>Update</button>";
+		$delete_button = "<button type='button' name='delete' value='$id'>Delete</button>";
+		return "<article class='book-component'>" . $basic_info_line . $summary_line . " " . $update_button . $delete_button . "</article>";
 	}
 	
 	function getBook($book_id) {
