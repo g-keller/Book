@@ -26,7 +26,7 @@
 			$row = $result->fetch_assoc();
 			while ($row) {
 				$update_button = "<button type='button' name='update' value='$row[id]'>Update</button>";
-				$delete_button = "<button type='button' name='delete'>Delete</button>";
+				$delete_button = "<button type='button' name='delete' value='$row[id]'>Delete</button>";
 				echo $row['title'] . " " . $row['author'] . " " . $row['genre'] . "<br>" . $row['summary'] . " " . $update_button . $delete_button . "<br><br>";
 				$row = $result->fetch_assoc();
 			}

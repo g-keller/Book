@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<title>Book DB</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="main.js" async></script>
+<style>
+	form, label, input {
+		display: block;
+	}
+</style>
 </head>
 
 <body>
