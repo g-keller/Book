@@ -42,7 +42,7 @@
 		$summary_line = "<p>$summary</p>";
 		$update_button = "<button type='button' name='update' value='$id'>Update</button>";
 		$delete_button = "<button type='button' name='delete' value='$id'>Delete</button>";
-		return "<article class='book-component'>" . $basic_info_line . $summary_line . " " . $update_button . $delete_button . "</article>";
+		return "<article id='$id' class='book-component'>" . $basic_info_line . $summary_line . " " . $update_button . $delete_button . "</article>";
 	}
 	
 	function getBook($book_id) {
