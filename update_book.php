@@ -8,11 +8,11 @@
 			$book = getBook($update_id);
 			
 			// make sure these are sanitized if I decide to simply insert these values in directly
-			$id = $book['id'];
-			$title = $book['title'];
-			$author = $book['author'];
-			$genre = $book['genre'];
-			$summary = $book['summary'];
+			$id = htmlspecialchars($book['id']);
+			$title = htmlspecialchars($book['title']);
+			$author = htmlspecialchars($book['author']);
+			$genre = htmlspecialchars($book['genre']);
+			$summary = htmlspecialchars($book['summary']);
 		}
 	}
 	else if ($_SERVER["REQUEST_METHOD"] == "POST") {

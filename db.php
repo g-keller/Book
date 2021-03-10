@@ -25,8 +25,12 @@
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
 			while ($row) {
-				$basic_info_line = "<p>$row[title]" . " " . $row['author'] . " " . $row['genre'] . "</p>";
-				$summary_line = "<p>$row[summary]</p>";
+				$title = htmlspecialchars($row['title']);
+				$author = htmlspecialchars($row['author']);
+				$genre = htmlspecialchars($row['genre']);
+				$summary = htmlspecialchars($row['summary']);
+				$basic_info_line = "<p>$title" . " " . $author . " " . $genre . "</p>";
+				$summary_line = "<p>$summary</p>";
 				$update_button = "<button type='button' name='update' value='$row[id]'>Update</button>";
 				$delete_button = "<button type='button' name='delete' value='$row[id]'>Delete</button>";
 				echo "<div id=$row[id]>" . $basic_info_line . $summary_line . " " . $update_button . $delete_button . "</div>";
@@ -58,7 +62,6 @@
 	}
 	
 	function updateBook($book_id, $title, $author, $genre, $summary) {
-		// this needs parameterized queries since it handles user input
 		global $conn;
 		$stmt = mysqli_prepare($conn, "update book
 									   set title = ?, author = ?, genre = ?, summary = ?
