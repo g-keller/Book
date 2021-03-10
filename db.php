@@ -38,28 +38,33 @@
 	
 	function getBook($book_id) {
 		global $conn;
-		$sql = "select * from book where id = $book_id";
-		$result = $conn->query($sql);
+		$stmt = mysqli_prepare($conn, "select * from book where id = ?");
+		mysqli_stmt_bind_param($stmt, "s", $book_id);
+		mysqli_stmt_execute($stmt);
+		$result = mysqli_stmt_get_result($stmt);
 		if ($result) {
 			return $result->fetch_assoc();
 		}
 	}
 	
 	function insertBook($title, $author, $genre, $summary) {
-		// this needs parameterized queries since it handles user input
+		// maybe use errno function to check for success?
+		// https://www.php.net/manual/en/mysqli-stmt.get-result.php
 		global $conn;
-		$sql = "insert into book (title, author, genre, summary)
-				values ('$title', '$author', '$genre', '$summary')";
-		$result = $conn->query($sql);
+		$stmt = mysqli_prepare($conn, "insert into book (title, author, genre, summary)
+				values (?, ?, ?, ?)");
+		mysqli_stmt_bind_param($stmt, "ssss", $title, $author, $genre, $summary);
+		mysqli_stmt_execute($stmt);
 	}
 	
 	function updateBook($book_id, $title, $author, $genre, $summary) {
 		// this needs parameterized queries since it handles user input
 		global $conn;
-		$sql = "update book
-				set title = '$title', author = '$author', genre = '$genre', summary = '$summary' 
-				where id = '$book_id'";
-		$result = $conn->query($sql);
+		$stmt = mysqli_prepare($conn, "update book
+									   set title = ?, author = ?, genre = ?, summary = ?
+									   where id = ?");
+		mysqli_stmt_bind_param($stmt, "sssss", $title, $author, $genre, $summary, $book_id);
+		mysqli_stmt_execute($stmt);
 	}
 	
 	function deleteBook($book_id) {

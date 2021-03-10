@@ -25,7 +25,7 @@
 		if (!empty($title) && !empty($author) && !empty($genre) && !empty($summary)) {
 			updateBook($id, $title, $author, $genre, $summary);
 		}
-		header("Location: index.php");
+		header("Location: /");
 	}
 
 
