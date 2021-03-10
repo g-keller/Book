@@ -25,10 +25,10 @@
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
 			while ($row) {
-				$title = htmlspecialchars($row['title']);
-				$author = htmlspecialchars($row['author']);
-				$genre = htmlspecialchars($row['genre']);
-				$summary = htmlspecialchars($row['summary']);
+				$title = !empty($row['title']) ? htmlspecialchars($row['title']) : "[TITLE NOT SPECIFIED]";
+				$author = !empty($row['author']) ? htmlspecialchars($row['author']) : "[AUTHOR NOT SPECIFIED]";
+				$genre = !empty($row['genre']) ? htmlspecialchars($row['genre']) : "[GENRE NOT SPECIFIED]";
+				$summary = !empty($row['summary']) ? htmlspecialchars($row['summary']) : "[SUMMARY NOT SPECIFIED]";
 				$basic_info_line = "<p>$title" . " " . $author . " " . $genre . "</p>";
 				$summary_line = "<p>$summary</p>";
 				$update_button = "<button type='button' name='update' value='$row[id]'>Update</button>";

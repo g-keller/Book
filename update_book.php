@@ -22,7 +22,10 @@
 		$author = $_POST["bookDBAuthor"];
 		$genre = $_POST["bookDBGenre"];
 		$summary = $_POST["bookDBSummary"];
-		if (!empty($title) && !empty($author) && !empty($genre) && !empty($summary)) {
+		if (empty($title) && empty($author) && empty($genre) && empty($summary)) {
+			deleteBook($id);
+		}
+		else {
 			updateBook($id, $title, $author, $genre, $summary);
 		}
 		header("Location: /");
