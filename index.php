@@ -24,7 +24,10 @@
 		<input type="text" name="bookDBGenre" />
 		<label for="bookDBSummary">Summary: </label>
 		<input type="text" name="bookDBSummary"/>
+		<div style="display: flex; align-items: center;">
 		<input type="submit" />
+		<button type="button" name="cancel">Cancel</button>
+		</div>
 	</form>
 	</div>
 </div>

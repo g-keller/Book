@@ -1,6 +1,13 @@
-var updateButtons = $("button[name=update]")
+var updateButtons = $("button[name=update]");
 var deleteButtons = $("button[name=delete]");
+var cancelButton = $("button[name=cancel]");
 var addButton = $("#add");
+
+var titleField = $("input[name=bookDBTitle]");
+var authorField = $("input[name=bookDBAuthor]");
+var genreField = $("input[name=bookDBGenre]");
+var summaryField = $("input[name=bookDBSummary]");
+
 var overlay = $("#overlay");
 var form = $("#overlay #inner form");
 
@@ -36,7 +43,16 @@ function hideOverlay() {
 	overlay.css("display", "none");
 }
 
+function cancelAdd() {
+	titleField.val("");
+	authorField.val("");
+	genreField.val("");
+	summaryField.val("");
+	hideOverlay();
+}
+
 updateButtons.on("click", redirectToUpdatePage);
 deleteButtons.on("click", deleteBook);
 addButton.on("click", displayOverlay);
 form.on("submit", hideOverlay);
+cancelButton.on("click", cancelAdd);

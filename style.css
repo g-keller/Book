@@ -64,6 +64,10 @@ h1 + button {
 	margin: 10px;
 }
 
+#inner form button {
+	margin: 10px;
+}
+
 #buttons button {
 	background-color: #007090;
 	color: #EAEBED;
@@ -97,6 +101,10 @@ h1 + button {
 }
 
 #update-div form input {
+	margin: 10px;
+}
+
+#update-div form button {
 	margin: 10px;
 }
 
